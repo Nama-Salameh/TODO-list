@@ -45,22 +45,32 @@ function deleteDescriptionInputValue() {
   )[0].value = "";
 }
 
-function saveTasks(){
-    localStorage.setItem("Tasks" , taskTableBody.innerHTML);
+function saveTasks() {
+  localStorage.setItem("Tasks", taskTableBody.innerHTML);
 }
 
-function showTasks(){
-    taskTableBody.innerHTML = localStorage.getItem("Tasks");
+function showTasks() {
+  taskTableBody.innerHTML = localStorage.getItem("Tasks");
 }
 showTasks();
 
-
-document.querySelector('.TODO__main__table--tasks').addEventListener('click', function (event) {
-    if (event.target.classList.contains('TODO__main__table--tasks__tr__button--delete')) {
-        const row = event.target.closest('tr');
+document
+  .querySelector(".TODO__main__table--tasks")
+  .addEventListener("click", function (event) {
+    if (
+      event.target.classList.contains(
+        "TODO__main__table--tasks__tr__button--delete"
+      )
+    ) {
+      const confirmed = window.confirm(
+        "Do you really want to delete this task?"
+      );
+      if (confirmed) {
+        const row = event.target.closest("tr");
         if (row) {
-            row.remove();
+          row.remove();
         }
+      }
     }
     saveTasks();
-});
+  });
