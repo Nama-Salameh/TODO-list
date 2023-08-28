@@ -95,3 +95,21 @@ function updateTotalTasks() {
   document.querySelector(".TODO__footer--tasksCounter").innerHTML =
     getTasksCount();
 }
+
+document
+  .querySelector(".TODO__main__table--tasks")
+  .addEventListener("click", function (event) {
+    if (
+      event.target.classList.contains(
+        "TODO__main__table--tasks__tr__button--done"
+      )
+    ) {
+      const row = event.target.closest("tr");
+      row.cells[3].textContent = "Completed";
+      saveTasks();
+
+      row
+        .querySelector(".TODO__main__table--tasks__tr__button--delete")
+        .remove();
+    }
+  });
