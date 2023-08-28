@@ -109,13 +109,13 @@ document
       saveTasks();
 
       row
-        .querySelector(".TODO__main__table--tasks__tr__button--delete")
+        .querySelector(".TODO__main__table--tasks__tr__button--done")
         .remove();
     }
   });
 
 
-  
+
 var searchInput = document.getElementsByClassName(
   "TODO__header__input--search"
 )[0];
