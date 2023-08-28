@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.TODO__header {
+  margin-top: 30px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.TODO__header__h1 {
+  padding: 15px;
+  font-size: 45px;
+}
+.TODO__header__section--AddTask {
+  padding: 0.5% 0;
+  justify-content: space-between;
+}
+.TODO__header__section--AddTask__input--add {
+  padding: 0 10px;
+  height: 70%;
+  border-radius: 5px;
+  border: 2px solid #cccccce4;
+}
+.TODO__header__section--AddTask__button--Add {
+  width: 50px;
+  height: 35px;
+  border-style: none;
+  border-radius: 7px;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+}
+.TODO__header__input--search {
+  padding: 0 10px;
+  height: 20%;
+  width: 34%;
+  border-radius: 5px;
+  border: 2px solid #cccccce4;
+}
+
+.TODO__main__table--tasks {
+  border-collapse: collapse;
+  text-align: center;
+  width: 95%;
+  margin: 30px auto 30px;
+  font-size: 20px;
+}
+.TODO__main__table--tasks__tr {
+  height: 55px;
+}
+.TODO__main__table--tasks td {
+  border-bottom: 2px solid #ecececf9;
+}
+.TODO__main__table--tasks__header {
+  background-color: #ecececf9;
+}
+.TODO__main__table--tasks__tr__button--delete {
+  width: 80px;
+  padding: 10px;
+  font-size: 15px;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+}
+.TODO__main__table--tasks__tr__button--done {
+  width: 80px;
+  padding: 10px;
+  font-size: 15px;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+}
+
+.TODO__footer {
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

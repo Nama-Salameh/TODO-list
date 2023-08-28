@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="e">
+  <head>
+    <title>TODO list</title>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Nama' Salameh" />
+    <meta name="description" content="This is a TODO list task" />
+    <link rel="icon" href="images\TODO-icon.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="TODO__header">
+      <h1 class="TODO__header__h1">TODO List</h1>
+      <section class="TODO__header__section--AddTask">
+        <input
+          class="TODO__header__section--AddTask__input--add"
+          placeholder="Add new task..."
+        />
+        <button class="TODO__header__section--AddTask__button--Add">Add</button>
+      </section>
+      <input
+        class="TODO__header__input--search"
+        placeholder="Search tasks..."
+      />
+    </header>
+
+    <main class="TODO__main">
+      <table class="TODO__main__table--tasks">
+        <thead>
+          <tr
+            class="TODO__main__table--tasks__header TODO__main__table--tasks__tr"
+          >
+            <th>ID</th>
+            <th>TODO Description</th>
+            <th>User ID</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="TODO__main__table--tasks__tr">
+            <td>1</td>
+            <td>Do somthing</td>
+            <td>26</td>
+            <td>Completed</td>
+            <td>
+              <button class="TODO__main__table--tasks__tr__button--delete">
+                Delete
+              </button>
+              <button class="TODO__main__table--tasks__tr__button--done">
+                Done
+              </button>
+            </td>
+          </tr>
+          <tr class="TODO__main__table--tasks__tr">
+            <td>2</td>
+            <td>Do somthing</td>
+            <td>25</td>
+            <td>Bending</td>
+            <td>
+              <button class="TODO__main__table--tasks__tr__button--delete">
+                Delete
+              </button>
+              <button class="TODO__main__table--tasks__tr__button--done">
+                Done
+              </button>
+            </td>
+          </tr>
+          <tr class="TODO__main__table--tasks__tr">
+            <td>3</td>
+            <td>Create a TODO list project with java script</td>
+            <td>29</td>
+            <td>Bending</td>
+            <td>
+              <button class="TODO__main__table--tasks__tr__button--delete">
+                Delete
+              </button>
+              <button class="TODO__main__table--tasks__tr__button--done">
+                Done
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <footer class="TODO__footer">
+      <p>Total Tasks:</p>
+      <p class="TODO__footer--tasksCounter">3</p>
+    </footer>
+  </body>
+</html>
