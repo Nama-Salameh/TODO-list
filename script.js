@@ -69,8 +69,20 @@ document
         const row = event.target.closest("tr");
         if (row) {
           row.remove();
+          updateTaskIDs();
         }
       }
     }
     saveTasks();
   });
+
+function updateTaskIDs() {
+  const taskRows = document.querySelectorAll(
+    ".TODO__main__table--tasks__body tr"
+  );
+
+  taskRows.forEach((row, index) => {
+    const idCell = row.cells[0];
+    idCell.textContent = index + 1;
+  });
+}
