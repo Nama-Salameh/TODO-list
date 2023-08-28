@@ -14,6 +14,7 @@ function AddTask() {
   newTask.classList.add("TODO--main--table--tasks--tr");
   var cell1 = newTask.insertCell(0);
   var cell2 = newTask.insertCell(1);
+  cell2.classList.add("Description--Cell");
   var cell3 = newTask.insertCell(2);
   var cell4 = newTask.insertCell(3);
   var cell5 = newTask.insertCell(4);
@@ -108,13 +109,9 @@ document
       row.cells[3].textContent = "Completed";
       saveTasks();
 
-      row
-        .querySelector(".TODO__main__table--tasks__tr__button--done")
-        .remove();
+      row.querySelector(".TODO__main__table--tasks__tr__button--done").remove();
     }
   });
-
-
 
 var searchInput = document.getElementsByClassName(
   "TODO__header__input--search"
@@ -134,4 +131,15 @@ searchInput.addEventListener("input", () => {
       else row.style.display = "none";
     }
   });
+});
+
+taskTable.addEventListener("click", function (event) {
+  const targetCell = event.target;
+  if (targetCell.classList.contains("Description--Cell")) {
+    targetCell.contentEditable = true;
+    targetCell.focus();
+    targetCell.addEventListener("blur", function () {
+      this.contentEditable = false;
+    });
+  }
 });
