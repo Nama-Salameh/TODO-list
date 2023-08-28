@@ -21,7 +21,12 @@
           class="TODO__header__section--AddTask__input--add"
           placeholder="Add new task..."
         />
-        <button class="TODO__header__section--AddTask__button--Add">Add</button>
+        <button
+          class="TODO__header__section--AddTask__button--Add"
+          onclick="AddTask()"
+        >
+          Add
+        </button>
       </section>
       <input
         class="TODO__header__input--search"
@@ -42,55 +47,14 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="TODO__main__table--tasks__tr">
-            <td>1</td>
-            <td>Do somthing</td>
-            <td>26</td>
-            <td>Completed</td>
-            <td>
-              <button class="TODO__main__table--tasks__tr__button--delete">
-                Delete
-              </button>
-              <button class="TODO__main__table--tasks__tr__button--done">
-                Done
-              </button>
-            </td>
-          </tr>
-          <tr class="TODO__main__table--tasks__tr">
-            <td>2</td>
-            <td>Do somthing</td>
-            <td>25</td>
-            <td>Bending</td>
-            <td>
-              <button class="TODO__main__table--tasks__tr__button--delete">
-                Delete
-              </button>
-              <button class="TODO__main__table--tasks__tr__button--done">
-                Done
-              </button>
-            </td>
-          </tr>
-          <tr class="TODO__main__table--tasks__tr">
-            <td>3</td>
-            <td>Create a TODO list project with java script</td>
-            <td>29</td>
-            <td>Bending</td>
-            <td>
-              <button class="TODO__main__table--tasks__tr__button--delete">
-                Delete
-              </button>
-              <button class="TODO__main__table--tasks__tr__button--done">
-                Done
-              </button>
-            </td>
-          </tr>
-        </tbody>
+        <tbody id="TODO__main__table--tasks__body"></tbody>
       </table>
     </main>
     <footer class="TODO__footer">
       <p>Total Tasks:</p>
-      <p class="TODO__footer--tasksCounter">3</p>
+      <p class="TODO__footer--tasksCounter"></p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

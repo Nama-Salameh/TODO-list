@@ -48,9 +48,9 @@
   text-align: center;
   width: 95%;
   margin: 30px auto 30px;
-  font-size: 20px;
+  font-size: 18px;
 }
-.TODO__main__table--tasks__tr {
+.TODO--main--table--tasks--tr {
   height: 55px;
 }
 .TODO__main__table--tasks td {
