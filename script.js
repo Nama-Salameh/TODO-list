@@ -26,6 +26,7 @@ function AddTask() {
     ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
 
   deleteDescriptionInputValue();
+  saveTasks();
 }
 
 function getTaskDescription() {
@@ -43,3 +44,12 @@ function deleteDescriptionInputValue() {
     "TODO__header__section--AddTask__input--add"
   )[0].value = "";
 }
+
+function saveTasks(){
+    localStorage.setItem("Tasks" , taskTableBody.innerHTML);
+}
+
+function showTasks(){
+    taskTableBody.innerHTML = localStorage.getItem("Tasks");
+}
+showTasks();
