@@ -27,6 +27,7 @@ function AddTask() {
 
   deleteDescriptionInputValue();
   saveTasks();
+  updateTotalTasks();
 }
 
 function getTaskDescription() {
@@ -52,7 +53,9 @@ function saveTasks() {
 function showTasks() {
   taskTableBody.innerHTML = localStorage.getItem("Tasks");
 }
+
 showTasks();
+updateTotalTasks();
 
 document
   .querySelector(".TODO__main__table--tasks")
@@ -70,19 +73,25 @@ document
         if (row) {
           row.remove();
           updateTaskIDs();
+          saveTasks();
+          updateTotalTasks();
         }
       }
     }
-    saveTasks();
   });
 
 function updateTaskIDs() {
   const taskRows = document.querySelectorAll(
-    ".TODO__main__table--tasks__body tr"
+    ".TODO__main__table--tasks tbody tr"
   );
 
   taskRows.forEach((row, index) => {
     const idCell = row.cells[0];
     idCell.textContent = index + 1;
   });
+}
+
+function updateTotalTasks() {
+  document.querySelector(".TODO__footer--tasksCounter").innerHTML =
+    getTasksCount();
 }
