@@ -113,3 +113,25 @@ document
         .remove();
     }
   });
+
+
+  
+var searchInput = document.getElementsByClassName(
+  "TODO__header__input--search"
+)[0];
+
+searchInput.addEventListener("input", () => {
+  var searchText = searchInput.value.toLowerCase();
+
+  var taskRows = document.querySelectorAll(
+    ".TODO__main__table--tasks tbody tr"
+  );
+  taskRows.forEach((row) => {
+    var taskDescriptionCell = row.cells[1];
+    if (taskDescriptionCell) {
+      var taskDescription = taskDescriptionCell.textContent.toLowerCase();
+      if (taskDescription.includes(searchText)) row.style.display = "";
+      else row.style.display = "none";
+    }
+  });
+});
