@@ -4,6 +4,10 @@ const taskTable = document.getElementsByClassName(
 const taskTableBody = document.getElementById("TODO__main__table--tasks__body");
 
   async function fetchTasks() {
+    if (localStorage.getItem("Tasks")) {
+        return;
+      } 
+
     const url = new URL("https://dummyjson.com/todos");
     let response = await fetch(url);
     if (!response.ok) throw new Error("failed when trying to fetch data");
@@ -29,12 +33,11 @@ const taskTableBody = document.getElementById("TODO__main__table--tasks__body");
       cell5.innerHTML =
         ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
     });
-    localStorage.setItem("Tasks", "true");
     saveTasks();
     updateTotalTasks();
   }
 
-function AddTask() {
+  function AddTask() {
   var taskDescription = getTaskDescription();
   if (taskDescription === "") {
     return;
@@ -79,7 +82,6 @@ function deleteDescriptionInputValue() {
 }
 
 function saveTasks() {
-    if( localStorage.getItem("Tasks") === '') fetchTasks();
   localStorage.setItem("Tasks", taskTableBody.innerHTML);
 }
 
@@ -173,5 +175,6 @@ taskTable.addEventListener("click", function (event) {
   }
 });
 
+fetchTasks();
 showTasks();
 updateTotalTasks();
