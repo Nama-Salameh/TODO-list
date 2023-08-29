@@ -55,7 +55,8 @@ const taskTableBody = document.getElementById("TODO__main__table--tasks__body");
 
   cell1.innerHTML = getTasksCount();
   cell2.innerHTML = taskDescription;
-  cell3.innerHTML = "43";
+  var randomUserId = Math.floor(Math.random() * 100) + 1;
+  cell3.innerHTML = randomUserId.toString();
   cell4.innerHTML = "Pending";
   cell5.innerHTML =
     ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
