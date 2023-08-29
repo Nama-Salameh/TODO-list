@@ -3,6 +3,37 @@ const taskTable = document.getElementsByClassName(
 )[0];
 const taskTableBody = document.getElementById("TODO__main__table--tasks__body");
 
+  async function fetchTasks() {
+    const url = new URL("https://dummyjson.com/todos");
+    let response = await fetch(url);
+    if (!response.ok) throw new Error("failed when trying to fetch data");
+
+    const tasks = await response.json();
+    console.log(tasks);
+
+    tasks.todos.forEach((task) => {
+      var newTask = taskTableBody.insertRow();
+
+      newTask.classList.add("TODO--main--table--tasks--tr");
+      var cell1 = newTask.insertCell(0);
+      var cell2 = newTask.insertCell(1);
+      cell2.classList.add("Description--Cell");
+      var cell3 = newTask.insertCell(2);
+      var cell4 = newTask.insertCell(3);
+      var cell5 = newTask.insertCell(4);
+
+      cell1.innerHTML = task.id;
+      cell2.innerHTML = task.todo;
+      cell3.innerHTML = task.userId;
+      cell4.innerHTML = task.completed ? "Completed" : "Pending";
+      cell5.innerHTML =
+        ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
+    });
+    localStorage.setItem("Tasks", "true");
+    saveTasks();
+    updateTotalTasks();
+  }
+
 function AddTask() {
   var taskDescription = getTaskDescription();
   if (taskDescription === "") {
@@ -48,15 +79,13 @@ function deleteDescriptionInputValue() {
 }
 
 function saveTasks() {
+    if( localStorage.getItem("Tasks") === '') fetchTasks();
   localStorage.setItem("Tasks", taskTableBody.innerHTML);
 }
 
 function showTasks() {
   taskTableBody.innerHTML = localStorage.getItem("Tasks");
 }
-
-showTasks();
-updateTotalTasks();
 
 document
   .querySelector(".TODO__main__table--tasks")
@@ -143,3 +172,6 @@ taskTable.addEventListener("click", function (event) {
     });
   }
 });
+
+showTasks();
+updateTotalTasks();
