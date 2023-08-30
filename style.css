@@ -80,6 +80,10 @@
   background-color: green;
   cursor: pointer;
 }
+.done-task {
+  color: gray;
+  text-decoration: line-through;
+}
 .modal-container {
   width: 100%;
   height: 100vh;
@@ -139,10 +143,10 @@
   cursor: pointer;
 }
 .delete-button {
-  background-color: green;
+  background-color: red;
 }
 .cancel-button {
-  background-color: red;
+  background-color: rgb(179, 179, 179);
 }
 
 .TODO__footer {

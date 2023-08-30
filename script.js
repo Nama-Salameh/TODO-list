@@ -31,10 +31,11 @@ async function fetchTasks() {
     cell3.innerHTML = task.userId;
     cell4.innerHTML = task.completed ? "Completed" : "Pending";
 
-    if (task.completed === "Completed")
+    if (task.completed) {
+      cell2.classList.add("done-task");
       cell5.innerHTML =
         ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button>';
-    else
+    } else
       cell5.innerHTML =
         ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
   });
@@ -179,6 +180,7 @@ document
     ) {
       const row = event.target.closest("tr");
       row.cells[3].textContent = "Completed";
+      row.cells[1].classList.add("done-task");
       saveTasks();
 
       row.querySelector(".TODO__main__table--tasks__tr__button--done").remove();
