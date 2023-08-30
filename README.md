@@ -23,12 +23,12 @@
 1. Clone the repository.
 2. Open the project in visual code.
 3. If you don't have a yarn:
-   * Install it by running this on the terminal: **npm install --global yarn**
-   * Check yarn version by running this on the terminal: **yarn --version**
-4. Run this on the terminal: **npm init -y**
-5. Run this on the terminal: **yarn add json-server**
+   * Install it by running this on the terminal: <code>npm install --global yarn</code>
+   * Check yarn version by running this on the terminal: <code>yarn --version</code>
+4. Run this on the terminal: <code>npm init -y</code>
+5. Run this on the terminal: <code>yarn add json-server</code>
 6. Open package.json to add the new script:  "serve-json" : "json-server --watch db.json"
-7. Run this on the terminal **yarn serve-json**
+7. Run this on the terminal <code>yarn serve-json</code>
 
   
 ![TODO list resoonsive](https://github.com/Nama-Salameh/TODO-list/assets/92352860/980d6c25-6766-4b98-bcb6-bc79dba24069)
