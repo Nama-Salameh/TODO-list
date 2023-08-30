@@ -30,8 +30,13 @@ async function fetchTasks() {
     cell2.innerHTML = task.todo;
     cell3.innerHTML = task.userId;
     cell4.innerHTML = task.completed ? "Completed" : "Pending";
-    cell5.innerHTML =
-      ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
+
+    if (task.completed === "Completed")
+      cell5.innerHTML =
+        ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button>';
+    else
+      cell5.innerHTML =
+        ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
   });
   saveTasks();
   updateTotalTasks();
@@ -136,17 +141,17 @@ document
     }
   });
 
-  function updateTaskIDs() {
-    const taskRows = document.querySelectorAll(
-      ".TODO__main__table--tasks tbody tr"
-    );
-  
-    taskRows.forEach((row, index) => {
-      const idCell = row.cells[0];
-      idCell.textContent = index + 1;
-    });
-  }
-  
+function updateTaskIDs() {
+  const taskRows = document.querySelectorAll(
+    ".TODO__main__table--tasks tbody tr"
+  );
+
+  taskRows.forEach((row, index) => {
+    const idCell = row.cells[0];
+    idCell.textContent = index + 1;
+  });
+}
+
 function updateTotalTasks() {
   document.querySelector(".TODO__footer--tasksCounter").innerHTML =
     getTasksCount();
