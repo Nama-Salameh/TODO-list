@@ -2,42 +2,42 @@ const taskTable = document.getElementsByClassName(
   "TODO__main__table--tasks"
 )[0];
 const taskTableBody = document.getElementById("TODO__main__table--tasks__body");
+const url = new URL("https://dummyjson.com/todos");
 
-  async function fetchTasks() {
-    if (localStorage.getItem("Tasks")) {
-        return;
-      } 
-
-    const url = new URL("https://dummyjson.com/todos");
-    let response = await fetch(url);
-    if (!response.ok) throw new Error("failed when trying to fetch data");
-
-    const tasks = await response.json();
-    console.log(tasks);
-
-    tasks.todos.forEach((task) => {
-      var newTask = taskTableBody.insertRow();
-
-      newTask.classList.add("TODO--main--table--tasks--tr");
-      var cell1 = newTask.insertCell(0);
-      var cell2 = newTask.insertCell(1);
-      cell2.classList.add("Description--Cell");
-      var cell3 = newTask.insertCell(2);
-      var cell4 = newTask.insertCell(3);
-      var cell5 = newTask.insertCell(4);
-
-      cell1.innerHTML = task.id;
-      cell2.innerHTML = task.todo;
-      cell3.innerHTML = task.userId;
-      cell4.innerHTML = task.completed ? "Completed" : "Pending";
-      cell5.innerHTML =
-        ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
-    });
-    saveTasks();
-    updateTotalTasks();
+async function fetchTasks() {
+  if (localStorage.getItem("Tasks")) {
+    return;
   }
 
-  function AddTask() {
+  let response = await fetch(url);
+  if (!response.ok) throw new Error("failed when trying to fetch data");
+
+  const tasks = await response.json();
+  console.log(tasks);
+
+  tasks.todos.forEach((task) => {
+    var newTask = taskTableBody.insertRow();
+
+    newTask.classList.add("TODO--main--table--tasks--tr");
+    var cell1 = newTask.insertCell(0);
+    var cell2 = newTask.insertCell(1);
+    cell2.classList.add("Description--Cell");
+    var cell3 = newTask.insertCell(2);
+    var cell4 = newTask.insertCell(3);
+    var cell5 = newTask.insertCell(4);
+
+    cell1.innerHTML = task.id;
+    cell2.innerHTML = task.todo;
+    cell3.innerHTML = task.userId;
+    cell4.innerHTML = task.completed ? "Completed" : "Pending";
+    cell5.innerHTML =
+      ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
+  });
+  saveTasks();
+  updateTotalTasks();
+}
+
+async function AddTask() {
   var taskDescription = getTaskDescription();
   if (taskDescription === "") {
     return;
@@ -60,6 +60,29 @@ const taskTableBody = document.getElementById("TODO__main__table--tasks__body");
   cell4.innerHTML = "Pending";
   cell5.innerHTML =
     ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
+
+  var task = {
+    id: getTasksCount(),
+    todo: taskDescription,
+    completed: false,
+    userId: randomUserId,
+  };
+  console.log(task);
+
+  var response = await fetch("http://localhost:3000/todos", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(task),
+  });
+
+  if (!response.ok) {
+    console.error("HTTP error:", response.status, response.statusText);
+    throw new Error("HTTP error");
+  } else {
+    console.log("success");
+    const responseData = await response.json();
+    console.log(responseData);
+  }
 
   deleteDescriptionInputValue();
   saveTasks();
@@ -113,17 +136,17 @@ document
     }
   });
 
-function updateTaskIDs() {
-  const taskRows = document.querySelectorAll(
-    ".TODO__main__table--tasks tbody tr"
-  );
-
-  taskRows.forEach((row, index) => {
-    const idCell = row.cells[0];
-    idCell.textContent = index + 1;
-  });
-}
-
+  function updateTaskIDs() {
+    const taskRows = document.querySelectorAll(
+      ".TODO__main__table--tasks tbody tr"
+    );
+  
+    taskRows.forEach((row, index) => {
+      const idCell = row.cells[0];
+      idCell.textContent = index + 1;
+    });
+  }
+  
 function updateTotalTasks() {
   document.querySelector(".TODO__footer--tasksCounter").innerHTML =
     getTasksCount();
