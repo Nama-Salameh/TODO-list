@@ -126,20 +126,32 @@ document
         "TODO__main__table--tasks__tr__button--delete"
       )
     ) {
-      const confirmed = window.confirm(
-        "Do you really want to delete this task?"
-      );
-      if (confirmed) {
-        const row = event.target.closest("tr");
-        if (row) {
-          row.remove();
-          updateTaskIDs();
-          saveTasks();
-          updateTotalTasks();
-        }
-      }
+      let modal = document.querySelector(".modal-container");
+      modal.classList.add("modal-active");
+      deleteTask(event);
+      cancelDeletion(modal);
     }
   });
+
+function deleteTask(generalDeleteEvent) {
+  document.querySelector(".delete-button").addEventListener("click", () => {
+    const row = generalDeleteEvent.target.closest("tr");
+    if (row) {
+      row.remove();
+      updateTaskIDs();
+      saveTasks();
+      updateTotalTasks();
+    }
+    let modal = document.querySelector(".modal-container");
+    modal.classList.remove("modal-active");
+  });
+}
+
+function cancelDeletion(modal) {
+  document
+    .querySelector(".cancel-button")
+    .addEventListener("click", () => modal.classList.remove("modal-active"));
+}
 
 function updateTaskIDs() {
   const taskRows = document.querySelectorAll(
