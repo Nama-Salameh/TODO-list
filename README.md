@@ -1,6 +1,8 @@
 ## TODO-list
 #### This is a responsive "TODO List" web application built in HTML, CSS, and JavaScript. Enables users to manage tasks efficiently, and allows users to add, update, and remove TODO items.
 
+#### Visit my " TODO List"  web application and feel free to try out all the features  https://nama-salameh-todo-list.netlify.app/
+
 ## Features
 * Add new TODO.
 * Delete TODO and enable the user to confirm the deletion.
@@ -15,7 +17,6 @@
 * CSS
 * Javascript
 
-#### Visit my " TODO List"  web application and feel free to try out all the features  https://nama-salameh-todo-list.netlify.app/
 
 
 ## Installation:
