@@ -16,15 +16,15 @@ async function fetchTasks() {
   console.log(tasks);
 
   tasks.todos.forEach((task) => {
-    var newTask = taskTableBody.insertRow();
+    let newTask = taskTableBody.insertRow();
 
     newTask.classList.add("TODO--main--table--tasks--tr");
-    var cell1 = newTask.insertCell(0);
-    var cell2 = newTask.insertCell(1);
+    let cell1 = newTask.insertCell(0);
+    let cell2 = newTask.insertCell(1);
     cell2.classList.add("Description--Cell");
-    var cell3 = newTask.insertCell(2);
-    var cell4 = newTask.insertCell(3);
-    var cell5 = newTask.insertCell(4);
+    let cell3 = newTask.insertCell(2);
+    let cell4 = newTask.insertCell(3);
+    let cell5 = newTask.insertCell(4);
 
     cell1.innerHTML = task.id;
     cell2.innerHTML = task.todo;
@@ -44,30 +44,30 @@ async function fetchTasks() {
 }
 
 async function AddTask() {
-  var taskDescription = getTaskDescription();
+  let taskDescription = getTaskDescription();
   if (taskDescription === "") {
     return;
   }
 
-  var newTask = taskTableBody.insertRow();
+  let newTask = taskTableBody.insertRow();
 
   newTask.classList.add("TODO--main--table--tasks--tr");
-  var cell1 = newTask.insertCell(0);
-  var cell2 = newTask.insertCell(1);
+  let cell1 = newTask.insertCell(0);
+  let cell2 = newTask.insertCell(1);
   cell2.classList.add("Description--Cell");
-  var cell3 = newTask.insertCell(2);
-  var cell4 = newTask.insertCell(3);
-  var cell5 = newTask.insertCell(4);
+  let cell3 = newTask.insertCell(2);
+  let cell4 = newTask.insertCell(3);
+  let cell5 = newTask.insertCell(4);
 
   cell1.innerHTML = getTasksCount();
   cell2.innerHTML = taskDescription;
-  var randomUserId = Math.floor(Math.random() * 100) + 1;
+  let randomUserId = Math.floor(Math.random() * 100) + 1;
   cell3.innerHTML = randomUserId.toString();
   cell4.innerHTML = "Pending";
   cell5.innerHTML =
     ' <button class="TODO__main__table--tasks__tr__button--delete"> Delete </button> <button class="TODO__main__table--tasks__tr__button--done"> Done</button>';
 
-  var task = {
+  let task = {
     id: getTasksCount(),
     todo: taskDescription,
     completed: false,
@@ -75,7 +75,7 @@ async function AddTask() {
   };
   console.log(task);
 
-  var response = await fetch("http://localhost:3000/todos", {
+  let response = await fetch("http://localhost:3000/todos", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
@@ -187,20 +187,20 @@ document
     }
   });
 
-var searchInput = document.getElementsByClassName(
+let searchInput = document.getElementsByClassName(
   "TODO__header__input--search"
 )[0];
 
 searchInput.addEventListener("input", () => {
-  var searchText = searchInput.value.toLowerCase();
+  let searchText = searchInput.value.toLowerCase();
 
-  var taskRows = document.querySelectorAll(
+  let taskRows = document.querySelectorAll(
     ".TODO__main__table--tasks tbody tr"
   );
   taskRows.forEach((row) => {
-    var taskDescriptionCell = row.cells[1];
+    let taskDescriptionCell = row.cells[1];
     if (taskDescriptionCell) {
-      var taskDescription = taskDescriptionCell.textContent.toLowerCase();
+      let taskDescription = taskDescriptionCell.textContent.toLowerCase();
       if (taskDescription.includes(searchText)) row.style.display = "";
       else row.style.display = "none";
     }
