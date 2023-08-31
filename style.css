@@ -46,7 +46,7 @@
 
 .TODO__main__table--tasks {
   border-collapse: collapse;
-  text-align: center;
+  text-align: left;
   width: 95%;
   margin: 30px auto 30px;
   font-size: 18px;
@@ -56,9 +56,11 @@
 }
 .TODO__main__table--tasks td {
   border-bottom: 2px solid #ecececf9;
+  padding: 25px;
 }
-.TODO__main__table--tasks__header {
+.TODO__main__table--tasks__header th {
   background-color: #ecececf9;
+  padding: 25px;
 }
 .TODO__main__table--tasks__tr__button--delete {
   width: 80px;
@@ -158,6 +160,13 @@
   margin-bottom: 25px;
 }
 
+@media (min-width: 992px) and (max-width: 1248px){
+  .TODO__main__table--tasks__tr__button--delete,
+  .TODO__main__table--tasks__tr__button--done {
+    padding: 7px;
+    margin-bottom: 5px;
+  }
+}
 @media (max-width: 992px) {
   .TODO__header__h1 {
     font-size: 43px;
