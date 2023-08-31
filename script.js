@@ -181,9 +181,8 @@ document
       const row = event.target.closest("tr");
       row.cells[3].textContent = "Completed";
       row.cells[1].classList.add("done-task");
-      saveTasks();
-
       row.querySelector(".TODO__main__table--tasks__tr__button--done").remove();
+      saveTasks();
     }
   });
 
