@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="e">
+  <head>
+    <title>TODO list</title>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Nama' Salameh" />
+    <meta name="description" content="This is a TODO list task" />
+    <link rel="icon" href="images\TODO-icon.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="TODO__header">
+      <h1 class="TODO__header__h1">TODO List</h1>
+      <section class="TODO__header__section--AddTask">
+        <input
+          class="TODO__header__section--AddTask__input--add"
+          placeholder="Add new task..."
+        />
+        <button
+          class="TODO__header__section--AddTask__button--Add"
+          onclick="AddTask()"
+        >
+          Add
+        </button>
+      </section>
+      <input
+        class="TODO__header__input--search"
+        placeholder="Search tasks..."
+      />
+    </header>
+
+    <main class="TODO__main">
+      <table class="TODO__main__table--tasks">
+        <thead>
+          <tr
+            class="TODO__main__table--tasks__header TODO--main--table--tasks--tr"
+          >
+            <th>ID</th>
+            <th>TODO Description</th>
+            <th>User ID</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="TODO__main__table--tasks__body"></tbody>
+      </table>
+      <div class="modal-container">
+        <div class="modal">
+          <img src="images/delete-iocn.png" alt="delete icon image" />
+          <div class="confirm-question-container">
+            <h2>Are you sure?</h2>
+            <p>
+              Do you really to delete this task? you connot undo this deletion.
+            </p>
+          </div>
+          <div class="buttons-container">
+            <button class="delete-button">Delete</button>
+            <button class="cancel-button">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="TODO__footer">
+      <p>Total Tasks:</p>
+      <p class="TODO__footer--tasksCounter"></p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
